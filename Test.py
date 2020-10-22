@@ -29,6 +29,9 @@ if responce.status_code == 200:
             
             results.append(item)  
 
+else:
+    results.append({'error': f'received invalid status code ({response.status_code})'})
+
 with open('personal.json', 'w') as json_file:
     json.dump(results, json_file)
 
