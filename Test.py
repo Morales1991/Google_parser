@@ -19,8 +19,8 @@ if responce.status_code == 200:
         if anchors:
             link = anchors[0]['href']
             title = g.find('h3').text
-            Description = g.find('span').text
-
+            Description = g.select_one('div > div:not([class]) > span').text
+        
             item = {
                 'Name': title,
                 'Url': link,
@@ -29,6 +29,6 @@ if responce.status_code == 200:
             
             results.append(item)  
 
-
 with open('personal.json', 'w') as json_file:
     json.dump(results, json_file)
+
